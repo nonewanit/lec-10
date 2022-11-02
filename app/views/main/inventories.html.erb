@@ -1,0 +1,19 @@
+<h1>Inventories</h1>
+<%= @temp %>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Price</th>
+    <th>Seller</th>
+  </tr>
+  <% i = 1 %>
+  <% for data in @db %>
+    <tr>
+      <td><%= i %></td>
+      <td><%= data.price %></td>
+      <td><%= Item.where(id: data.item_id)[0].user_id %></td>
+      <% i+=1 %>
+    </tr>
+  <% end %>
+</table>
+

@@ -1,0 +1,23 @@
+<%= @temp %>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Price</th>
+    <th>Name</th>
+    <th>Stock</th>
+    <% if session[:logged_in] == true %><th></th><% end %>
+  </tr>
+  <% i = 1 %>
+  <% for data in @db %>
+    <tr>
+      <td><%= i %></td>
+      <td><%= data.price %></td>
+      <td><%= data.name %></td>
+      <td><%= data.stock %></td>
+      <% if session[:logged_in] == true %>
+      	<td><%= button_to('buy',shop_buy_path(data.id,params[:id]),class: 'btn btn-primary') %></td>
+      <% end %>
+      <% i+=1 %>
+    </tr>
+  <% end %>
+</table>
